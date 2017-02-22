@@ -38,8 +38,8 @@ try {
 const PORT = process.env.PORT || 8445;
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN;
-
+//const WIT_TOKEN = process.env.WIT_TOKEN;
+const WIT_TOKEN = "GXPOPFVCFO7TZW2R36RHRYW6VUWQ3B5C";
 // Messenger API parameters
 const FB_PAGE_TOKEN = "EAADZBOcZCGQYQBALEaJk7ZAJZBR9AjBd1D1rlFOZBl6w0xJnrprcoCTsJS6PfxZC7QumAIZCApE7hxoGKhBq1ZCOuNZBqPGHsDfrqvZCRDMrSpiinOsZBes9S5MsJMCtLwaS553XuTQqbMcnycKS6kxvLZCC73cDnvbntQVJxwCZBkbAjFAZDZD";
 const FB_APP_SECRET = "279524252467588";

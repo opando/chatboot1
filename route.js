@@ -60,7 +60,7 @@ module.exports  = function(app,request){
 
     var messageId = message.mid;
 
-    var messageText = message.text;
+    var messageText = ' te estoy imitando -> ' + message.text;
     var messageAttachments = message.attachments;
 
     if (messageText) {

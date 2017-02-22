@@ -1,6 +1,13 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
+/*
+module.exports = {
+  log: require('./lib/log'),
+  Wit: require('./lib/wit'),
+  interactive: require('./lib/interactive')
+};
+*/
 
 //init express
 var app = express();

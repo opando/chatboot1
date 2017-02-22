@@ -151,6 +151,18 @@ const actions = {
   // See https://wit.ai/docs/quickstart
 };
 
+const firstEntityValue = (entities, entity) => {
+  const val = entities && entities[entity] &&
+    Array.isArray(entities[entity]) &&
+    entities[entity].length > 0 &&
+    entities[entity][0].value
+  ;
+  if (!val) {
+    return null;
+  }
+  return typeof val === 'object' ? val.value : val;
+};
+
 // Setting up our bot
 const wit = new Wit({
   accessToken: WIT_TOKEN,

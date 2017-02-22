@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //Ruteo
-require('./route')(app);
+require('./route')(app,request);
 
 
 app.listen(app.get('port'),function(){

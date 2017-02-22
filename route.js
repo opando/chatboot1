@@ -1,4 +1,4 @@
-module.exports  = function(app){
+module.exports  = function(app,request){
   app.get('/', function(req, res){
   	res.send('demo chatboot');
   })

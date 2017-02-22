@@ -1,0 +1,14 @@
+{
+  "name": "chatboot1",
+  "version": "1.0.0",
+  "description": "chatboot para facebook messenger",
+  "main": "index.js",
+  "repository": "despues",
+  "author": "opando",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "request": "^2.79.0"
+  }
+}

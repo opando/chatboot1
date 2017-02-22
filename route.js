@@ -1,5 +1,6 @@
 module.exports  = function(app,request){
 var Wit =  require('./lib/wit');
+var fetch = require('node-fetch');
 
   app.get('/', function(req, res){
   	res.send('demo chatboot');

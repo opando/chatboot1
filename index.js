@@ -1,6 +1,8 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
+//var fetch = require('node-fetch');
+
 /*
 module.exports = {
   log: require('./lib/log'),

@@ -1,6 +1,6 @@
 var express = require('express');
-var express = require('request');
-var express = require('body-parser');
+var request = require('request');
+var bodyParser = require('body-parser');
 
 //init express
 var app = express();

@@ -146,6 +146,13 @@ const actions = {
       //delete context.forecast;
     }
     return context;
+  },
+  getInfoRMT({context, entities}) {
+    var infoRMT = firstEntityValue(entities, 'local_search_query');
+    console.log("local_search query -> " + consultaRuc);
+    console.log("context ---> " + JSON.stringify(context));
+
+    return context;
   }
   // You should implement your custom actions here
   // See https://wit.ai/docs/quickstart

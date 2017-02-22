@@ -1,4 +1,6 @@
 module.exports  = function(app,request){
+var Wit =  require('./lib/wit');
+
   app.get('/', function(req, res){
   	res.send('demo chatboot');
   })
@@ -150,7 +152,7 @@ module.exports  = function(app,request){
 
 //----------------------------------------------------
 var WIT_TOKEN = 'GXPOPFVCFO7TZW2R36RHRYW6VUWQ3B5C';
-
+/*
 let Wit = null;
 let interactive = null;
 try {
@@ -161,6 +163,7 @@ try {
   Wit = require('node-wit').Wit;
   interactive = require('node-wit').interactive;
 }
+*/
 /*
 const accessToken = (() => {
   if (process.argv.length !== 3) {

@@ -19,6 +19,10 @@ const express = require('express');
 const fetch = require('node-fetch');
 const request = require('request');
 
+let Wit =  require('./lib/wit');
+let log = require('./lib/log');
+
+/*
 let Wit = null;
 let log = null;
 try {
@@ -29,7 +33,7 @@ try {
   Wit = require('node-wit').Wit;
   log = require('node-wit').log;
 }
-
+*/
 // Webserver parameter
 const PORT = process.env.PORT || 8445;
 

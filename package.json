@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "chatboot para facebook messenger",
   "main": "index.js",
-  "repository": "despues",
+  "repository": "https://github.com/opando/chatboot1.git",
   "author": "opando",
   "license": "MIT",
   "dependencies": {

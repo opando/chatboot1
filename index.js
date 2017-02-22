@@ -149,7 +149,7 @@ const actions = {
   },
   getInfoRMT({context, entities}) {
     var infoRMT = firstEntityValue(entities, 'local_search_query');
-    console.log("local_search query -> " + consultaRuc);
+    console.log("local_search query -> " + infoRMT);
     console.log("context ---> " + JSON.stringify(context));
 
     return context;

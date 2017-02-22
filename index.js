@@ -41,12 +41,16 @@ const PORT = process.env.PORT || 8445;
 const WIT_TOKEN = process.env.WIT_TOKEN;
 
 // Messenger API parameters
+const FB_PAGE_TOKEN = "EAADZBOcZCGQYQBALEaJk7ZAJZBR9AjBd1D1rlFOZBl6w0xJnrprcoCTsJS6PfxZC7QumAIZCApE7hxoGKhBq1ZCOuNZBqPGHsDfrqvZCRDMrSpiinOsZBes9S5MsJMCtLwaS553XuTQqbMcnycKS6kxvLZCC73cDnvbntQVJxwCZBkbAjFAZDZD";
+const FB_APP_SECRET = "279524252467588";
+/*
 const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
+
 const FB_APP_SECRET = process.env.FB_APP_SECRET;
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
-
-let FB_VERIFY_TOKEN = null;
+*/
+let FB_VERIFY_TOKEN = "SUPER_TOKEN";
 crypto.randomBytes(8, (err, buff) => {
   if (err) throw err;
   FB_VERIFY_TOKEN = buff.toString('hex');
@@ -149,7 +153,8 @@ app.use(({method, url}, rsp, next) => {
   });
   next();
 });
-app.use(bodyParser.json({ verify: verifyRequestSignature }));
+//app.use(bodyParser.json({ verify: verifyRequestSignature }));
+app.use(bodyParser.json());
 
 // Webhook setup
 app.get('/webhook', (req, res) => {

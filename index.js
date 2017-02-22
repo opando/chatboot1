@@ -134,6 +134,19 @@ const actions = {
       return Promise.resolve()
     }
   },
+  getNumRuc({context, entities}) {
+    var consultaRuc = firstEntityValue(entities, 'local_search_query');
+    console.log("local_search query -> " + consultaRuc);
+    console.log("context ---> " + JSON.stringify(context));
+    if (consultaRuc) {
+      context.numRuc = '1042348967'; // we should call a weather API here
+      //delete context.missingLocation;
+    } else {
+      //context.missingLocation = true;
+      //delete context.forecast;
+    }
+    return context;
+  }
   // You should implement your custom actions here
   // See https://wit.ai/docs/quickstart
 };

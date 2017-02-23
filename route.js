@@ -3,6 +3,7 @@ module.exports  = function(app,request){
 //var fetch = require('node-fetch');
 var PAGE_ACCESS_TOKEN = process.env.FB_PAGE_TOKEN;
 let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
+var beneficiosRMT = "-No presentar las declaraciones que contengan la determinación de la deuda tributaria, dentro de los plazos establecidos.\n-Omitir llevar los libros de contabilidad, u otros libros y/o registros u otros medios de control exigidos por las leyes y reglamentos\n-Llevar los libros de contabilidad, u otros libros y/o registros sin observar la forma y condiciones establecidas en las normas correspondientes.\n-Llevar con atraso mayor al permitido por las normas vigentes, los libros de contabilidad u otros libros o registros.\n-No exhibir los libros, registros u otros documentos que la Administración Tributaria solicite.";
 
 
   app.get('/', function(req, res){
@@ -37,8 +38,14 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
        // Iterate over each messaging event
        entry.messaging.forEach(function(event) {
          if (event.message) {
-           receivedMessage(event);
-         } else {
+           if(event.message.is_echo){
+             console.log("is echo : " + JSON.stringify(event.message));
+           }else{
+             receivedMessage(event);
+            }
+         } if (event.postback) {
+           receivedPostback(event);
+         }else {
            console.log("Webhook received unknown event: ", event);
          }
        });
@@ -97,6 +104,20 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
     }
   }
 
+  function receivedPostback(event){
+    var senderID = event.sender.id;
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        text: beneficiosRMT
+      }
+    };
+
+    callSendAPI(messageData);
+  }
+
   function sendGenericMessage(recipientId, messageText) {
     console.log("paso por sendGenericMessage()");
 
@@ -111,7 +132,7 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
           template_type: "generic",
           elements: [{
             title: "Régimen MYPE Tributario (RMT)",
-            subtitle: "Next-generation virtual reality",
+            subtitle: "Si tienes una empresa domiciliada en el país cuyos ingresos netos anuales proyectados no superen 1 700 UIT en el ejercicio, el Régimen MYPE Tributario (RMT) podría ser para ti.",
             item_url: "http://eboletin.sunat.gob.pe/index.php?option=com_content&view=article&id=315:regimen-mype-tributario-primeras-interrogantes-sobre-este-nuevo-regimen&catid=1:orientacion-tributaria",
             image_url: "http://eboletin.sunat.gob.pe/images/imagenes/mype_1.jpg",
             buttons: [{
@@ -124,14 +145,18 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
               payload: "beneficios RMT",
             }],
           }, {
-            title: "touch",
-            subtitle: "Opción de Consulta Estado de la Solicitud de Devolución",
+            title: "Consulta Estado Devolucion",
+            subtitle: "Consulta Estado de la Solicitud de Devolución",
             item_url: "http://orientacion.sunat.gob.pe/index.php/personas-menu/devoluciones-personas/6812-08-opcion-de-consulta-estado-de-la-solicitud-de-devolucion",
             image_url: "http://orientacion.sunat.gob.pe/images/devoluciones/pasounodevoluciones.JPG",
             buttons: [{
               type: "web_url",
               url: "https://www.youtube.com/watch?v=CfNLF6gEZS4&feature=youtu.be",
-              title: "video"
+              title: "ver guia (video)"
+            },{
+              type: "web_url",
+              url: "https://e-menu.sunat.gob.pe/cl-ti-itmenu/MenuInternet.htm",
+              title: "SUNAT Operaciones en Linea"
             }]
           }]
         }

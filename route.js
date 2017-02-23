@@ -44,9 +44,10 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
              receivedMessage(event);
             }
          } if (event.postback) {
+           console.log("is postback : " + JSON.stringify(event));
            receivedPostback(event);
          }else {
-           console.log("Webhook received unknown event: ", event);
+           console.log("Webhook received unknown event: ", JSON.stringify(event));
          }
        });
      });
@@ -105,7 +106,7 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
   }
 
   function receivedPostback(event){
-    var senderID = event.sender.id;
+    var recipientId = event.sender.id;
     var messageData = {
       recipient: {
         id: recipientId

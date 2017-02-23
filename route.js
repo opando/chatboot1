@@ -80,7 +80,10 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
     console.log(JSON.stringify(message));
 
     var messageId = message.mid;
-    var messageText = null;
+    var messageText = message.text;
+
+
+/*
     var cad = message.text;
 
     console.log("cad + " + cad.toUpperCase());
@@ -91,7 +94,7 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
     }else{
       messageText = message.text;
     }
-
+    */
 
 
 
@@ -101,17 +104,23 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
 
       // If we receive a text message, check to see if it matches a keyword
       // and send back the example. Otherwise, just echo the text we received.
-      switch (messageText) {
+      switch (messageText.toUpperCase()) {
         case 'OPCIONES':
           sendGenericMessage(senderID);
           break;
 
         default:
-          sendTextMessage(senderID, messageText);
+          var respuest = obtenerRespuestaNPL(senderID,messageText);
+          sendTextMessage(senderID, respuest);
       }
     } else if (messageAttachments) {
       sendTextMessage(senderID, "Message with attachment received");
     }
+  }
+
+  function obtenerRespuestaNPL(senderID,messageText){
+
+    return 'Aun no me han entrenado en este tipo de preguntas. Pero pronto podre responderlas.' ;
   }
 
   function receivedPostback(event){

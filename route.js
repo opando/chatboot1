@@ -81,8 +81,12 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
 
     var messageId = message.mid;
     var messageText = null;
+    var cad = message.text;
 
-    if (message.text.toUpperCase()!='OPCIONES') {
+    console.log("cad + " + cad.toUpperCase());
+    cad = cad.toUpperCase();
+
+    if (cad!='OPCIONES') {
       messageText = 'Aun no me han entrenado en este tipo de preguntas. Pero pronto podre responderlas.';
     }else{
       messageText = message.text;

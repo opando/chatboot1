@@ -102,7 +102,7 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
       // If we receive a text message, check to see if it matches a keyword
       // and send back the example. Otherwise, just echo the text we received.
       switch (messageText) {
-        case 'opciones':
+        case 'OPCIONES':
           sendGenericMessage(senderID);
           break;
 

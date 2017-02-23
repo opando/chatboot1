@@ -2,7 +2,7 @@ module.exports  = function(app,request){
 //var Wit =  require('./lib/wit');
 //var fetch = require('node-fetch');
 var PAGE_ACCESS_TOKEN = process.env.FB_PAGE_TOKEN;
-let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;;
+let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 
 
   app.get('/', function(req, res){
@@ -110,32 +110,28 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;;
         payload: {
           template_type: "generic",
           elements: [{
-            title: "rift",
+            title: "Régimen MYPE Tributario (RMT)",
             subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",
-            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+            item_url: "http://eboletin.sunat.gob.pe/index.php?option=com_content&view=article&id=315:regimen-mype-tributario-primeras-interrogantes-sobre-este-nuevo-regimen&catid=1:orientacion-tributaria",
+            image_url: "http://eboletin.sunat.gob.pe/images/imagenes/mype_1.jpg",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
+              url: "http://eboletin.sunat.gob.pe/index.php?option=com_content&view=article&id=311:regimen-mype-tributario-un-nuevo-regimen-para-los-contribuyentes&catid=1:orientacion-tributaria",
+              title: "Un nuevo régimen para los contribuyentes"
             }, {
               type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
+              title: "¿Qué beneficios tiene el Régimen MYPE Tributario (RMT)?",
+              payload: "beneficios RMT",
             }],
           }, {
             title: "touch",
-            subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.oculus.com/en-us/touch/",
-            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+            subtitle: "Opción de Consulta Estado de la Solicitud de Devolución",
+            item_url: "http://orientacion.sunat.gob.pe/index.php/personas-menu/devoluciones-personas/6812-08-opcion-de-consulta-estado-de-la-solicitud-de-devolucion",
+            image_url: "http://orientacion.sunat.gob.pe/images/devoluciones/pasounodevoluciones.JPG",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/touch/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for second bubble",
+              url: "https://www.youtube.com/watch?v=CfNLF6gEZS4&feature=youtu.be",
+              title: "video"
             }]
           }]
         }

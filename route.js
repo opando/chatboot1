@@ -71,6 +71,8 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;;
 
     if (message.text!='generic') {
       messageText = ' te estoy imitando -> ' + message.text;
+    }else{
+      messageText = message.text;
     }
 
 

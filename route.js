@@ -28,7 +28,7 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
 
   app.post('/webhook', function (req, res) {
    var data = req.body;
-   console.log(">>>> webhook <<<<");
+   console.log(">>>> metodo webhook <<<<");
    // Make sure this is a page subscription
    if (data.object === 'page') {
 

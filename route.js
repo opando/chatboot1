@@ -67,7 +67,12 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;;
     console.log(JSON.stringify(message));
 
     var messageId = message.mid;
-    var messageText = ' te estoy imitando -> ' + message.text;
+    var messageText = null;
+
+    if (message.text!='generic') {
+      messageText = ' te estoy imitando -> ' + message.text;
+    }
+
 
 
 

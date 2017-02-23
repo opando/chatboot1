@@ -56,7 +56,7 @@ let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;;
 
   function receivedMessage(event) {
     var senderID = event.sender.id;
-    var sessionId = findOrCreateSession(senderID);
+    //var sessionId = findOrCreateSession(senderID);
 
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;

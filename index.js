@@ -2,6 +2,16 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+var mongoose = require('mongoose');
+var dbpassword = process.env.DB_PASS_SUNATFB;
+//coneccion MongoDB
+mongoose.connect('mongodb://opando:' + dbpassword + '@ds145369.mlab.com:45369/sunatfb', function(err, res){
+		if(err)
+			console.log('ERROR: Conectando a DB' + err);
+		else
+			console.log('coneccion a la BD satisfactoria');
+});
+
 //var fetch = require('node-fetch');
 
 /*

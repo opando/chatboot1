@@ -1,9 +1,11 @@
 module.exports  = function(app,request){
 //var Wit =  require('./lib/wit');
 //var fetch = require('node-fetch');
+var MessageFB = require('./model/MessageFB');
+
 var PAGE_ACCESS_TOKEN = process.env.FB_PAGE_TOKEN;
 let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
-var beneficiosRMT = "-No presentar las declaraciones que contengan la determinación de la deuda tributaria, dentro de los plazos establecidos.\n-Omitir llevar los libros de contabilidad, u otros libros y/o registros u otros medios de control exigidos por las leyes y reglamentos\n-Llevar los libros de contabilidad, u otros libros y/o registros sin observar la forma y condiciones establecidas en las normas correspondientes.\n-Llevar con atraso mayor al permitido por las normas vigentes, los libros de contabilidad u otros libros o registros.\n-No exhibir los libros, registros u otros documentos que la Administración Tributaria solicite.";
+var beneficiosRMT = "-No presentar las declaraciones que contengan la determinación de la deuda tributaria, dentro de los plazos establecidos.\n-Omitir llevar los libros de contabilidad, u otros libros y/o registros u otros medios de control exigidos por las leyes y reglamentos\n-No exhibir los libros, registros u otros documentos que la Administración Tributaria solicite.";
 
 
   app.get('/', function(req, res){
@@ -40,6 +42,8 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
          if (event.message) {
            if(event.message.is_echo){
              console.log("is echo : " + JSON.stringify(event.message));
+             guardarMsg(event.message);
+
            }else{
              receivedMessage(event);
             }
@@ -117,6 +121,24 @@ var beneficiosRMT = "-No presentar las declaraciones que contengan la determinac
     };
 
     callSendAPI(messageData);
+  }
+
+  function guardarMsg(message){
+    var c = new MessageFB({
+
+			message: message.text ,
+      fechaEnvio : '' +new Date(),
+      tipoMSG : 'ENVIO',
+      clasificacion: ''
+		});
+
+		c.save(function(err,output){
+			if(!err){
+				console.log("guardarMSG [output] :" + output);
+				
+			}else
+				console.log("ERROR " + err);
+		});
   }
 
   function sendGenericMessage(recipientId, messageText) {
